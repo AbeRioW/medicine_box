@@ -18,11 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "spi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "oled.h"
+#include "RC522.h"
 
 /* USER CODE END Includes */
 
@@ -87,13 +89,21 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
-	OLED_ColorTurn(0);//0Õý³£ÏÔÊ¾£¬1 ·´É«ÏÔÊ¾
-  OLED_DisplayTurn(0);//0Õý³£ÏÔÊ¾ 1 ÆÁÄ»·­×ªÏÔÊ¾
+	OLED_ColorTurn(0);//0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½1 ï¿½ï¿½É«ï¿½ï¿½Ê¾
+  OLED_DisplayTurn(0);//0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ 1 ï¿½ï¿½Ä»ï¿½ï¿½×ªï¿½ï¿½Ê¾
 	OLED_Clear();
-					OLED_ShowString(90,0,(uint8_t*)"hello",16,1);
+				//	OLED_ShowString(90,0,(uint8_t*)"hello",16,1);
 			  OLED_Refresh(); 
+				
+					PCD_Reset();
+  PCD_AntennaOff(); 
+  PCD_AntennaOn(); 
+	
+	
+test_rc522();
   /* USER CODE END 2 */
 
   /* Infinite loop */
