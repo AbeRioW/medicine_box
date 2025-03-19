@@ -614,6 +614,16 @@
               <FileType>1</FileType>
               <FilePath>..\BSP\DHT11.c</FilePath>
             </File>
+            <File>
+              <FileName>ds18b20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\ds18b20.c</FilePath>
+            </File>
+            <File>
+              <FileName>ds18b20.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\ds18b20.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

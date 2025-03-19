@@ -33,3 +33,4 @@ medicine_box\main.o: ../BSP/RC522.h
 medicine_box\main.o: ../BSP/DHT11.h
 medicine_box\main.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 medicine_box\main.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+medicine_box\main.o: ../BSP/ds18b20.h

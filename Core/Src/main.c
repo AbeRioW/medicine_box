@@ -26,6 +26,7 @@
 #include "oled.h"
 #include "RC522.h"
 #include "DHT11.h"
+#include "ds18b20.h"
 
 /* USER CODE END Includes */
 
@@ -101,8 +102,11 @@ int main(void)
   PCD_AntennaOff(); 
   PCD_AntennaOn(); 
 	
-	
-
+	if(DS_Init()==0)
+	{
+		  OLED_ShowString(1,1,(uint8_t*)"123",8,1);
+		  OLED_Refresh();
+	}
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,7 +114,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-DHT11_READ_DATA();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
