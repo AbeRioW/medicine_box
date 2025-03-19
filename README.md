@@ -1,1 +1,6 @@
-# medicine_box
+基于STM32F103C8T6的智能药箱  
+DHT11  
+SIM800C GSM模块  
+ESP8266
+SNR9816TTS模块  
+DS18B20
