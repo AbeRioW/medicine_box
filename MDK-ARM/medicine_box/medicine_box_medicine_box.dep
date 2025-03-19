@@ -1,7 +1,7 @@
 Dependencies for Project 'medicine_box', Target 'medicine_box': (DO NOT MODIFY !)
-F (startup_stm32f103xb.s)(0x67DA7E1F)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list startup_stm32f103xb.lst --xref -o medicine_box\startup_stm32f103xb.o --depend medicine_box\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x67DA80D2)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\main.o --omf_browse medicine_box\main.crf --depend medicine_box\main.d)
-I (../Core/Inc/main.h)(0x67DA7E1A)
+F (startup_stm32f103xb.s)(0x67DA84D0)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list startup_stm32f103xb.lst --xref -o medicine_box\startup_stm32f103xb.o --depend medicine_box\startup_stm32f103xb.d)
+F (../Core/Src/main.c)(0x67DA8717)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\main.o --omf_browse medicine_box\main.crf --depend medicine_box\main.d)
+I (../Core/Inc/main.h)(0x67DA84CD)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
@@ -31,9 +31,12 @@ I (../Core/Inc/spi.h)(0x67DA7E18)
 I (../Core/Inc/gpio.h)(0x67DA72EA)
 I (../BSP/oled.h)(0x67DA74BD)
 I (../BSP/RC522.h)(0x67DA80C6)
-F (../Core/Src/gpio.c)(0x67DA7E17)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\gpio.o --omf_browse medicine_box\gpio.crf --depend medicine_box\gpio.d)
+I (../BSP/DHT11.h)(0x67DA861C)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
+F (../Core/Src/gpio.c)(0x67DA84CB)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\gpio.o --omf_browse medicine_box\gpio.crf --depend medicine_box\gpio.d)
 I (../Core/Inc/gpio.h)(0x67DA72EA)
-I (../Core/Inc/main.h)(0x67DA7E1A)
+I (../Core/Inc/main.h)(0x67DA84CD)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
@@ -61,7 +64,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x672EEA36)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x672EEA36)
 F (../Core/Src/spi.c)(0x67DA7E18)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\spi.o --omf_browse medicine_box\spi.crf --depend medicine_box\spi.d)
 I (../Core/Inc/spi.h)(0x67DA7E18)
-I (../Core/Inc/main.h)(0x67DA7E1A)
+I (../Core/Inc/main.h)(0x67DA84CD)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
@@ -88,7 +91,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x672EEA36)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x672EEA36)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x672EEA36)
 F (../Core/Src/stm32f1xx_it.c)(0x67DA7E19)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\stm32f1xx_it.o --omf_browse medicine_box\stm32f1xx_it.crf --depend medicine_box\stm32f1xx_it.d)
-I (../Core/Inc/main.h)(0x67DA7E1A)
+I (../Core/Inc/main.h)(0x67DA84CD)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
@@ -116,7 +119,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x672EEA36)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_it.h)(0x67DA7E19)
 F (../Core/Src/stm32f1xx_hal_msp.c)(0x67DA72EB)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\stm32f1xx_hal_msp.o --omf_browse medicine_box\stm32f1xx_hal_msp.crf --depend medicine_box\stm32f1xx_hal_msp.d)
-I (../Core/Inc/main.h)(0x67DA7E1A)
+I (../Core/Inc/main.h)(0x67DA84CD)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
@@ -483,7 +486,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x672EEA36)
 F (..\BSP\oled.c)(0x67D7FDE3)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\oled.o --omf_browse medicine_box\oled.crf --depend medicine_box\oled.d)
 I (..\BSP\oled.h)(0x67DA74BD)
 I (../Core/Inc/gpio.h)(0x67DA72EA)
-I (../Core/Inc/main.h)(0x67DA7E1A)
+I (../Core/Inc/main.h)(0x67DA84CD)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
@@ -513,7 +516,7 @@ I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (..\BSP\oledfont.h)(0x67D7FDE3)
 F (..\BSP\RC522.c)(0x67DA80BB)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\rc522.o --omf_browse medicine_box\rc522.crf --depend medicine_box\rc522.d)
 I (..\BSP\RC522.h)(0x67DA80C6)
-I (../Core/Inc/main.h)(0x67DA7E1A)
+I (../Core/Inc/main.h)(0x67DA84CD)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
@@ -541,4 +544,36 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x672EEA36)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x672EEA36)
 I (../Core/Inc/spi.h)(0x67DA7E18)
 I (../Core/Inc/gpio.h)(0x67DA72EA)
+I (..\BSP\oled.h)(0x67DA74BD)
+F (..\BSP\DHT11.c)(0x67DA868E)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../BSP-I.\RTE\_medicine_box-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o medicine_box\dht11.o --omf_browse medicine_box\dht11.crf --depend medicine_box\dht11.d)
+I (..\BSP\DHT11.h)(0x67DA861C)
+I (../Core/Inc/main.h)(0x67DA84CD)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x672EEA36)
+I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67DA7E1A)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x672EEA36)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x672EEA36)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x672EEA36)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x672EEA09)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x672EEA09)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x672EEA09)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x672EEA09)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x672EEA36)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x672EEA36)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x672EEA36)
+I (../Core/Inc/gpio.h)(0x67DA72EA)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
 I (..\BSP\oled.h)(0x67DA74BD)

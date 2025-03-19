@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include "oled.h"
 #include "RC522.h"
+#include "DHT11.h"
 
 /* USER CODE END Includes */
 
@@ -95,15 +96,13 @@ int main(void)
 	OLED_ColorTurn(0);//0������ʾ��1 ��ɫ��ʾ
   OLED_DisplayTurn(0);//0������ʾ 1 ��Ļ��ת��ʾ
 	OLED_Clear();
-				//	OLED_ShowString(90,0,(uint8_t*)"hello",16,1);
-			  OLED_Refresh(); 
-				
-					PCD_Reset();
+
+	PCD_Reset();
   PCD_AntennaOff(); 
   PCD_AntennaOn(); 
 	
 	
-test_rc522();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,7 +110,7 @@ test_rc522();
   while (1)
   {
     /* USER CODE END WHILE */
-
+DHT11_READ_DATA();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

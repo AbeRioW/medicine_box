@@ -609,6 +609,11 @@
               <FileType>1</FileType>
               <FilePath>..\BSP\RC522.c</FilePath>
             </File>
+            <File>
+              <FileName>DHT11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\DHT11.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

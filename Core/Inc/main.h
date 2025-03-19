@@ -71,6 +71,8 @@ void Error_Handler(void);
 #define SPI1_RST_GPIO_Port GPIOB
 #define SPI1_CS_Pin GPIO_PIN_7
 #define SPI1_CS_GPIO_Port GPIOB
+#define DHT11_Pin GPIO_PIN_9
+#define DHT11_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

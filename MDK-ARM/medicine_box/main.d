@@ -30,3 +30,6 @@ medicine_box\main.o: ../Core/Inc/spi.h
 medicine_box\main.o: ../Core/Inc/gpio.h
 medicine_box\main.o: ../BSP/oled.h
 medicine_box\main.o: ../BSP/RC522.h
+medicine_box\main.o: ../BSP/DHT11.h
+medicine_box\main.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+medicine_box\main.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
