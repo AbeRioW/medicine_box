@@ -70,7 +70,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  float num_d;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -104,8 +104,6 @@ int main(void)
 	
 	if(DS_Init()==0)
 	{
-		  OLED_ShowString(1,1,(uint8_t*)"123",8,1);
-		  OLED_Refresh();
 	}
   /* USER CODE END 2 */
 
@@ -116,6 +114,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		DHT11_READ_DATA();
+		num_d = Get_DS_Temperature();
+		oled_showFnum(1,30,num_d,16,1);
+		OLED_Refresh();
+		//HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }

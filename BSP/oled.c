@@ -1,6 +1,7 @@
 #include "oled.h"
 #include "stdlib.h"
-#include "oledfont.h"  	 
+#include "oledfont.h" 
+#include "stdio.h"
 
 uint8_t OLED_GRAM[144][8];
 
@@ -429,5 +430,13 @@ void OLED_Init(void)
 	OLED_WR_Byte(0xA6,OLED_CMD);// Disable Inverse Display On (0xa6/a7) 
 	OLED_Clear();
 	OLED_WR_Byte(0xAF,OLED_CMD);
+}
+
+
+void oled_showFnum(uint8_t x,uint8_t y,float fnum,uint8_t size1,uint8_t mode)
+{
+		uint8_t Data[]=" ";
+		sprintf(Data,"%.03f C",fnum);
+		OLED_ShowString(x,y,(uint8_t*)Data,size1,mode);
 }
 

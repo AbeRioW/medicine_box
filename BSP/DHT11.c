@@ -83,6 +83,7 @@ unsigned char DHT11_READ_BYTE(void)
   */
 unsigned char DHT11_READ_DATA(void)
 {
+	  char show_data[30]={0};
     uint8_t i;
     uint8_t data[5] = {0};
 		char dht11_data[11]={0};
@@ -102,7 +103,8 @@ unsigned char DHT11_READ_DATA(void)
         if(data[0] + data[1] + data[2] + data[3] == data[4])
         {
             //printf("当前湿度：%d.%d%%RH当前温度：%d.%d°C--",data[0],data[1],data[2],data[3]);
-					  OLED_ShowString(1,1,(uint8_t*)"yes",8,1);
+					  sprintf(show_data,"%d.%d%%RH %d.%dC",data[0],data[1],data[2],data[3]);
+					  OLED_ShowString(1,1,(uint8_t*)show_data,16,1);
 					  OLED_Refresh();
             return 1;                               //  数据校验通过
         }
