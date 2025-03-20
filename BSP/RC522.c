@@ -700,7 +700,7 @@ void test_rc522(void)
 		uint8_t cardid[4]={0x00,0x00,0x00,0x00};
 	 while(1)
 	 {
-		status = PCD_Request(PICC_REQALL, g_ucTempbuf);//???
+		 status = PCD_Request(PICC_REQALL, g_ucTempbuf);//???
 		 if(status)
 		 {
 				PCD_Reset();
@@ -708,13 +708,14 @@ void test_rc522(void)
 				PCD_AntennaOn(); 
 			  continue;
 		 }
-		 status = PCD_Anticoll(cardid);  //防冲撞，获取ID信息
+			status = PCD_Anticoll(cardid);  //防冲撞，获取ID信息
 		 	OLED_ShowNum(10,10,cardid[0],1,8,1);
 		 	OLED_ShowNum(10,20,cardid[1],1,8,1);
 		 	OLED_ShowNum(10,30,cardid[2],1,8,1);
 		 	OLED_ShowNum(10,40,cardid[3],1,8,1);
 			OLED_Refresh(); 
-		 
 	 }
 
 }
+
+//两个卡的ID 3131  7485

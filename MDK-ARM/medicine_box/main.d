@@ -26,7 +26,9 @@ medicine_box\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 medicine_box\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 medicine_box\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 medicine_box\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+medicine_box\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 medicine_box\main.o: ../Core/Inc/spi.h
+medicine_box\main.o: ../Core/Inc/usart.h
 medicine_box\main.o: ../Core/Inc/gpio.h
 medicine_box\main.o: ../BSP/oled.h
 medicine_box\main.o: ../BSP/RC522.h
@@ -34,3 +36,4 @@ medicine_box\main.o: ../BSP/DHT11.h
 medicine_box\main.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 medicine_box\main.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 medicine_box\main.o: ../BSP/ds18b20.h
+medicine_box\main.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

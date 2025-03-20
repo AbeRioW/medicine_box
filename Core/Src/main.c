@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -27,6 +28,7 @@
 #include "RC522.h"
 #include "DHT11.h"
 #include "ds18b20.h"
+#include "string.h"
 
 /* USER CODE END Includes */
 
@@ -71,6 +73,11 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
   float num_d;
+		 uint8_t status,i;
+	uint8_t g_ucTempbuf[20]; 
+		uint8_t cardid[4]={0x00,0x00,0x00,0x00};
+		uint8_t card1[4]={0x43,0xea,0x26,0x2d};
+		uint8_t card2[4]={0x03,0x83,0x35,0x29};
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -92,6 +99,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
 	OLED_ColorTurn(0);//0������ʾ��1 ��ɫ��ʾ
@@ -105,19 +113,46 @@ int main(void)
 	if(DS_Init()==0)
 	{
 	}
+	//HAL_UART_Transmit(&huart1,buluofen,17,0xffff);
   /* USER CODE END 2 */
-
+ 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
 		DHT11_READ_DATA();
 		num_d = Get_DS_Temperature();
 		oled_showFnum(1,30,num_d,16,1);
 		OLED_Refresh();
+		status = PCD_Request(PICC_REQALL, g_ucTempbuf);//???
+		 if(status)
+		 {
+				PCD_Reset();
+				PCD_AntennaOff(); 
+				PCD_AntennaOn(); 
+			  continue;
+		 }
+		 status = PCD_Anticoll(cardid);  //防冲撞，获取ID信息
+//		 for(int i=0;i<4;i++)
+//		 {
+//				printf("%02x",cardid[i]);
+//		 }
+
+	//	 HAL_Delay(1500);
+		 if(memcmp(cardid,card1,4)==0)
+		 {
+				HAL_UART_Transmit(&huart1,buluofen,17,0xffff);
+			 		 HAL_Delay(1500);
+		 }
+		 
+		 if(memcmp(cardid,card2,4)==0)
+		 {
+				HAL_UART_Transmit(&huart1,ninenine,22,0xffff);
+			 		 HAL_Delay(1500);
+		 }
+
 		//HAL_Delay(1000);
   }
   /* USER CODE END 3 */

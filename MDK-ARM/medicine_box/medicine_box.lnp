@@ -3,6 +3,7 @@
 "medicine_box\main.o"
 "medicine_box\gpio.o"
 "medicine_box\spi.o"
+"medicine_box\usart.o"
 "medicine_box\stm32f1xx_it.o"
 "medicine_box\stm32f1xx_hal_msp.o"
 "medicine_box\stm32f1xx_hal_gpio_ex.o"
@@ -17,12 +18,13 @@
 "medicine_box\stm32f1xx_hal_flash.o"
 "medicine_box\stm32f1xx_hal_flash_ex.o"
 "medicine_box\stm32f1xx_hal_exti.o"
+"medicine_box\stm32f1xx_hal_uart.o"
 "medicine_box\system_stm32f1xx.o"
 "medicine_box\oled.o"
 "medicine_box\rc522.o"
 "medicine_box\dht11.o"
 "medicine_box\ds18b20.o"
---strict --scatter "medicine_box\medicine_box.sct"
+--library_type=microlib --strict --scatter "medicine_box\medicine_box.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "medicine_box.map" -o medicine_box\medicine_box.axf
