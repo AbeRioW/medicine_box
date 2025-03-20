@@ -54,7 +54,8 @@ void MX_GPIO_Init(void)
                           |OLED_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, SPI1_RST_Pin|SPI1_CS_Pin|DS18B20_Pin|DHT11_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, LED_Pin|LAY_Pin|SPI1_RST_Pin|SPI1_CS_Pin
+                          |DS18B20_Pin|DHT11_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : OLED_SCL_Pin OLED_SDA_Pin OLED_RES_Pin OLED_DC_Pin
                            OLED_CS_Pin */
@@ -65,12 +66,31 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SPI1_RST_Pin SPI1_CS_Pin */
-  GPIO_InitStruct.Pin = SPI1_RST_Pin|SPI1_CS_Pin;
+  /*Configure GPIO pins : LED_Pin DHT11_Pin */
+  GPIO_InitStruct.Pin = LED_Pin|DHT11_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LAY_Pin SPI1_RST_Pin SPI1_CS_Pin */
+  GPIO_InitStruct.Pin = LAY_Pin|SPI1_RST_Pin|SPI1_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : KEY3_Pin KEY2_Pin */
+  GPIO_InitStruct.Pin = KEY3_Pin|KEY2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : KEY1_Pin */
+  GPIO_InitStruct.Pin = KEY1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(KEY1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : DS18B20_Pin */
   GPIO_InitStruct.Pin = DS18B20_Pin;
@@ -78,13 +98,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(DS18B20_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : DHT11_Pin */
-  GPIO_InitStruct.Pin = DHT11_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(DHT11_GPIO_Port, &GPIO_InitStruct);
 
 }
 

@@ -32,3 +32,7 @@ medicine_box\dht11.o: ../Core/Inc/gpio.h
 medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 medicine_box\dht11.o: ..\BSP\oled.h
+medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+medicine_box\dht11.o: ..\BSP\esp8266.h
+medicine_box\dht11.o: ../Core/Inc/usart.h
+medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

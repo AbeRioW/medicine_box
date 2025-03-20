@@ -22,12 +22,25 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 C:\Users\Administrator\Desktop\gIT\medicine_box\MDK-ARM\medicine_box.uvprojx
-Project File Date:  03/19/2025
+Project File Date:  03/20/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin'
 Build target 'medicine_box'
-"medicine_box\medicine_box.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+../BSP/RC522.h(153): warning:  #1-D: last line of file ends without a newline
+  #endif
+../BSP/DHT11.h(30): warning:  #1-D: last line of file ends without a newline
+  #endif
+../BSP/esp8266.h(23): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Src/main.c(78): warning:  #177-D: variable "i"  was declared but never referenced
+  		 uint8_t status,i;
+../Core/Src/main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=15324 RO-data=8008 RW-data=80 ZI-data=12480  
+FromELF: creating hex file...
+"medicine_box\medicine_box.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +63,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

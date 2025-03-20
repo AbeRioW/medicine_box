@@ -6,12 +6,16 @@
 #include "stdio.h"
 #include "stdbool.h"
 #include "oled.h"
+#include "stdlib.h"
 
 
 #define DHT11_PIN_SET   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,GPIO_PIN_SET)                                            //  设置GPIO为高
 #define DHT11_PIN_RESET HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,GPIO_PIN_RESET)                                          //  设置GPIO为低
 #define DHT11_READ_IO   HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_9)                                                          //  DHT11 GPIO定义
 
+
+extern int rh_bang;
+extern int th_bang;
 
 void DHT11(void);
 void DHT11_START(void);

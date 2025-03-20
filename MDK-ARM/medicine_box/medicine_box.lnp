@@ -2,6 +2,7 @@
 "medicine_box\startup_stm32f103xb.o"
 "medicine_box\main.o"
 "medicine_box\gpio.o"
+"medicine_box\dma.o"
 "medicine_box\spi.o"
 "medicine_box\usart.o"
 "medicine_box\stm32f1xx_it.o"
@@ -24,6 +25,7 @@
 "medicine_box\rc522.o"
 "medicine_box\dht11.o"
 "medicine_box\ds18b20.o"
+"medicine_box\esp8266.o"
 --library_type=microlib --strict --scatter "medicine_box\medicine_box.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

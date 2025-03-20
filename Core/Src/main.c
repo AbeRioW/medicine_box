@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
@@ -29,6 +30,7 @@
 #include "DHT11.h"
 #include "ds18b20.h"
 #include "string.h"
+#include "esp8266.h"
 
 /* USER CODE END Includes */
 
@@ -98,34 +100,45 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI1_Init();
-  MX_USART1_UART_Init();
+  MX_USART1_UART_Init();   //for srn
+  MX_USART2_UART_Init();  //for esp8266
   /* USER CODE BEGIN 2 */
 	OLED_Init();
-	OLED_ColorTurn(0);//0������ʾ��1 ��ɫ��ʾ
-  OLED_DisplayTurn(0);//0������ʾ 1 ��Ļ��ת��ʾ
+	OLED_ColorTurn(0);
+  OLED_DisplayTurn(0);
 	OLED_Clear();
+
+//  							  OLED_ShowString(1,1,(uint8_t*)"123",16,1);
+//					  OLED_Refresh();
 
 	PCD_Reset();
   PCD_AntennaOff(); 
   PCD_AntennaOn(); 
-	
+	start_esp8266();
 	if(DS_Init()==0)
 	{
 	}
-	//HAL_UART_Transmit(&huart1,buluofen,17,0xffff);
+//	  HAL_GPIO_WritePin(GPIOB, LED_Pin, GPIO_PIN_RESET);
+//	  HAL_GPIO_WritePin(GPIOB, LAY_Pin,GPIO_PIN_RESET);
   /* USER CODE END 2 */
- 
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
+
 		DHT11_READ_DATA();
 		num_d = Get_DS_Temperature();
+		
+		
 		oled_showFnum(1,30,num_d,16,1);
 		OLED_Refresh();
+		handle_esp8266();
 		status = PCD_Request(PICC_REQALL, g_ucTempbuf);//???
 		 if(status)
 		 {
@@ -135,12 +148,7 @@ int main(void)
 			  continue;
 		 }
 		 status = PCD_Anticoll(cardid);  //防冲撞，获取ID信息
-//		 for(int i=0;i<4;i++)
-//		 {
-//				printf("%02x",cardid[i]);
-//		 }
 
-	//	 HAL_Delay(1500);
 		 if(memcmp(cardid,card1,4)==0)
 		 {
 				HAL_UART_Transmit(&huart1,buluofen,17,0xffff);

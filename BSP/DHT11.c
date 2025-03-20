@@ -1,4 +1,9 @@
 #include "DHT11.h"
+#include "esp8266.h"
+
+
+int rh_bang = 50;
+int th_bang = 50;
 /**
   * @brief  温湿度传感器主函数
   * @param  void
@@ -83,6 +88,7 @@ unsigned char DHT11_READ_BYTE(void)
   */
 unsigned char DHT11_READ_DATA(void)
 {
+	  static int i_count=0;
 	  char show_data[30]={0};
     uint8_t i;
     uint8_t data[5] = {0};
@@ -106,6 +112,15 @@ unsigned char DHT11_READ_DATA(void)
 					  sprintf(show_data,"%d.%d%%RH %d.%dC",data[0],data[1],data[2],data[3]);
 					  OLED_ShowString(1,1,(uint8_t*)show_data,16,1);
 					  OLED_Refresh();
+					  (data[0]>=rh_bang)? HAL_GPIO_WritePin(GPIOB, LAY_Pin,GPIO_PIN_RESET):HAL_GPIO_WritePin(GPIOB, LAY_Pin,GPIO_PIN_SET);//湿度过高开继电器 
+					   (data[2]>=th_bang)?HAL_GPIO_WritePin(GPIOB, LED_Pin,GPIO_PIN_RESET):HAL_GPIO_WritePin(GPIOB, LED_Pin,GPIO_PIN_SET);
+					  i_count++;
+					  if(i_count/100)
+						{
+							i_count=0;	
+							send_wifi(data,4);
+						}
+
             return 1;                               //  数据校验通过
         }
         else
