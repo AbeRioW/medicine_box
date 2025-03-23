@@ -20,6 +20,7 @@
 #include "main.h"
 #include "dma.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -63,7 +64,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+static void ui_setting(void);
+bool ui_come=false;
 /* USER CODE END 0 */
 
 /**
@@ -80,6 +82,9 @@ int main(void)
 		uint8_t cardid[4]={0x00,0x00,0x00,0x00};
 		uint8_t card1[4]={0x43,0xea,0x26,0x2d};
 		uint8_t card2[4]={0x03,0x83,0x35,0x29};
+		static int i_count=0;
+		static int time_p=0;
+		char data_show[20];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -102,8 +107,9 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_SPI1_Init();
-  MX_USART1_UART_Init();   //for srn
-  MX_USART2_UART_Init();  //for esp8266
+  MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
 	OLED_ColorTurn(0);
@@ -117,6 +123,7 @@ int main(void)
 	if(DS_Init()==0)
 	{
 	}
+//	HAL_GPIO_WritePin(GPIOB, LED_Pin, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -128,12 +135,45 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 		DHT11_READ_DATA();
-		num_d = Get_DS_Temperature();
-		
-		
-		oled_showFnum(1,30,num_d,16,1);
+		num_d = Get_DS_Temperature();		
+		oled_showFnum(1,20,num_d,8,1);
 		OLED_Refresh();
-		handle_esp8266();
+		
+		i_count++;
+		if(i_count/1000*5)
+		{
+			i_count=0;
+			sprintf(data_show,"temperature:%0.2f\r\n",num_d);			
+			send_wifi(data_show,19);
+		}
+		
+		if(time_right)
+		{
+			 time_right=false;
+			time_count=0;
+			 HAL_GPIO_WritePin(GPIOB, BEEP_Pin, GPIO_PIN_RESET);
+			 HAL_Delay(100);
+			 HAL_GPIO_WritePin(GPIOB, BEEP_Pin, GPIO_PIN_SET);
+		}
+		
+			OLED_ShowString(0,30,(uint8_t*)"ibuprofen",16,1);
+		  
+			OLED_ShowString(0,47,(uint8_t*)"999 dermatitis",16,1);
+  		OLED_Refresh();
+		  handle_esp8266();
+		 if(num_d>20)  //温度
+		  {
+			 //手机发短信
+		  }
+		 
+		 	if(botton == RIGHT)
+			{
+				  botton = UNPRESS;
+					OLED_Clear();
+				  ui_setting();
+			}
+
+		
 		status = PCD_Request(PICC_REQALL, g_ucTempbuf);//???
 		 if(status)
 		 {
@@ -155,6 +195,7 @@ int main(void)
 				HAL_UART_Transmit(&huart1,ninenine,22,0xffff);
 			 		 HAL_Delay(1500);
 		 }
+		 
 
 		//HAL_Delay(1000);
   }
@@ -201,7 +242,43 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+static void ui_setting(void)
+{
+	    ui_come= true;
+			char text[20];
+			OLED_ShowString(20,0,(uint8_t*)"Setting time",16,1);
+  		OLED_Refresh();	
+			while(1)
+			{
+					sprintf(text,"%02d",time_set);
+				  OLED_ShowString(40,30,(uint8_t*)text,16,1);
+					OLED_Refresh();	
+				  
+				  if(botton == LEFT)
+					{
+							botton = UNPRESS;
+						  time_set--;
+						  if(time_set<2)
+								time_set=10;
+					}
+					
+					if(botton == RIGHT)
+					{
+							botton = UNPRESS;
+						  time_set++;
+						  if(time_set>10)
+								time_set=2;
+					}
+					
+					if(botton == MIDLE)		
+					{
+							botton = UNPRESS;	
+              ui_come=false;						
+							return;
+					}						
+					
+			}
+}
 /* USER CODE END 4 */
 
 /**

@@ -22,7 +22,7 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN 0 */
-
+enum BUTTON botton = UNPRESS;
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -54,8 +54,8 @@ void MX_GPIO_Init(void)
                           |OLED_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LED_Pin|LAY_Pin|SPI1_RST_Pin|SPI1_CS_Pin
-                          |DS18B20_Pin|DHT11_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, BEEP_Pin|LED_Pin|LAY_Pin|SPI1_RST_Pin
+                          |SPI1_CS_Pin|DS18B20_Pin|DHT11_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : OLED_SCL_Pin OLED_SDA_Pin OLED_RES_Pin OLED_DC_Pin
                            OLED_CS_Pin */
@@ -66,8 +66,8 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_Pin DHT11_Pin */
-  GPIO_InitStruct.Pin = LED_Pin|DHT11_Pin;
+  /*Configure GPIO pins : BEEP_Pin LED_Pin DHT11_Pin */
+  GPIO_InitStruct.Pin = BEEP_Pin|LED_Pin|DHT11_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -99,8 +99,32 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(DS18B20_GPIO_Port, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 }
 
 /* USER CODE BEGIN 2 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+		if(GPIO_Pin==KEY1_Pin)
+		{
+			 botton = LEFT;
+		}
+		
+		if(GPIO_Pin==KEY2_Pin)
+		{
+			 botton = MIDLE;
+		}
+		
+		if(GPIO_Pin==KEY3_Pin)
+		{
+			 botton = RIGHT;
+		}
+}
 
 /* USER CODE END 2 */

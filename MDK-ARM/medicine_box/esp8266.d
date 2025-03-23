@@ -27,12 +27,15 @@ medicine_box\esp8266.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.
 medicine_box\esp8266.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 medicine_box\esp8266.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 medicine_box\esp8266.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+medicine_box\esp8266.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+medicine_box\esp8266.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 medicine_box\esp8266.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+medicine_box\esp8266.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 medicine_box\esp8266.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 medicine_box\esp8266.o: ../Core/Inc/usart.h
-medicine_box\esp8266.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 medicine_box\esp8266.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 medicine_box\esp8266.o: ../Core/Inc/gpio.h
 medicine_box\esp8266.o: ..\BSP\DHT11.h
 medicine_box\esp8266.o: ..\BSP\oled.h
 medicine_box\esp8266.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+medicine_box\esp8266.o: ../Core/Inc/tim.h

@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -67,16 +67,21 @@ void Error_Handler(void);
 #define OLED_DC_GPIO_Port GPIOA
 #define OLED_CS_Pin GPIO_PIN_6
 #define OLED_CS_GPIO_Port GPIOA
+#define BEEP_Pin GPIO_PIN_11
+#define BEEP_GPIO_Port GPIOB
 #define LED_Pin GPIO_PIN_12
 #define LED_GPIO_Port GPIOB
 #define LAY_Pin GPIO_PIN_13
 #define LAY_GPIO_Port GPIOB
 #define KEY3_Pin GPIO_PIN_14
 #define KEY3_GPIO_Port GPIOB
+#define KEY3_EXTI_IRQn EXTI15_10_IRQn
 #define KEY2_Pin GPIO_PIN_15
 #define KEY2_GPIO_Port GPIOB
+#define KEY2_EXTI_IRQn EXTI15_10_IRQn
 #define KEY1_Pin GPIO_PIN_8
 #define KEY1_GPIO_Port GPIOA
+#define KEY1_EXTI_IRQn EXTI9_5_IRQn
 #define SPI1_RST_Pin GPIO_PIN_6
 #define SPI1_RST_GPIO_Port GPIOB
 #define SPI1_CS_Pin GPIO_PIN_7
@@ -87,7 +92,7 @@ void Error_Handler(void);
 #define DHT11_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+extern bool ui_come;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

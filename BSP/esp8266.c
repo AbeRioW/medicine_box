@@ -1,5 +1,6 @@
 #include "esp8266.h"
 #include "DHT11.h"
+#include "tim.h"
 
 
 bool device_connect = false;
@@ -35,10 +36,19 @@ void handle_esp8266(void)
 //	char *send = "hello\r\n";
 	char *wifi_connect = "0,CONNECT";
 	char *wifi_rec = "\r\n+IPD,";
+	char *layon = "\r\n+IPD,0,5:layon";
+	char *timeset2 = "\r\n+IPD,0,5:set02";
+	char *timeset3 = "\r\n+IPD,0,5:set03";
+	char *timeset4 = "\r\n+IPD,0,5:set04";
+	char *timeset5 = "\r\n+IPD,0,5:set05";
+	char *timeset6 = "\r\n+IPD,0,5:set06";
+	char *timeset7 = "\r\n+IPD,0,5:set07";
+	char *timeset8 = "\r\n+IPD,0,5:set08";
+	char *timeset9 = "\r\n+IPD,0,5:set09";
+	char *timeset10 = "\r\n+IPD,0,5:set10";
 	if(rx2_end_flag)
 	{
-		  HAL_GPIO_WritePin(GPIOB, LED_Pin, GPIO_PIN_RESET);
-		  printf("HANDLE %s\r\n",uart2_rx);
+		 //printf("HANDLE %s\r\n",uart2_rx);
 			rx2_end_flag = false;
 		
 		  if(memcmp(uart2_rx,wifi_connect,9)==0)  //wifi已连接
@@ -47,10 +57,46 @@ void handle_esp8266(void)
 						device_connect=true;
 			}
 			
-			if(memcmp(uart2_rx,wifi_rec,7)==0)
+			if(memcmp(uart2_rx,layon,15)==0)
 			{
-						handle_wifi_data();
-				   //send_wifi(send,7);
+				   HAL_GPIO_WritePin(GPIOB, LAY_Pin, GPIO_PIN_RESET);
+			}
+			
+			
+			if(memcmp(uart2_rx,timeset2,16)==0)
+			{
+				  time_set = 2;
+			}
+			
+						if(memcmp(uart2_rx,timeset3,16)==0)
+			{
+				  time_set = 3;
+			}
+			
+						if(memcmp(uart2_rx,timeset4,16)==0)
+			{
+				  time_set = 5;
+			}
+			
+						if(memcmp(uart2_rx,timeset6,16)==0)
+			{
+				  time_set = 6;
+			}
+			
+						if(memcmp(uart2_rx,timeset8,16)==0)
+			{
+				  time_set = 8;
+			}
+			
+						if(memcmp(uart2_rx,timeset9,16)==0)
+			{
+				  time_set = 9;
+			}
+			
+						if(memcmp(uart2_rx,timeset10,16)==0)
+			{
+				printf("yes\r\n");
+				  time_set = 10;
 			}
 
 			rx2_count=0;
@@ -62,15 +108,30 @@ void handle_esp8266(void)
 
 void send_wifi(char *data,int size)
 {
-	  int offset = 0;  // 记录当前写入位置
-
+	  int send_size=0;
+	  if(size<10)
+		{
+			 send_size=1; 
+		}
+		
+		if(size>10&&size<100)
+		{
+				send_size=2;
+		}
+		
+			
+	  if(device_connect)
+		{
 			char send_data[50]={0};
 			char send_data1[50]={0};
 			sprintf(send_data,"AT+CIPSEND=0,%d\r\n",size);
-			HAL_UART_Transmit(&huart2,(uint8_t*)(send_data),16,0xffff);
+			HAL_UART_Transmit(&huart2,(uint8_t*)(send_data),15+send_size,0xffff);
 
 			HAL_Delay(100);
-		  HAL_UART_Transmit(&huart2,(uint8_t*)(data),size,0xffff);
+//		  HAL_UART_Transmit(&huart2,(uint8_t*)(data),size,0xffff);
+			HAL_UART_Transmit(&huart2,(uint8_t*)data,size,0xffff);
+		}
+
 
 }
 

@@ -27,10 +27,12 @@ medicine_box\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 medicine_box\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 medicine_box\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 medicine_box\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+medicine_box\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+medicine_box\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 medicine_box\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 medicine_box\dht11.o: ../Core/Inc/gpio.h
 medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 medicine_box\dht11.o: ..\BSP\oled.h
 medicine_box\dht11.o: C:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 medicine_box\dht11.o: ..\BSP\esp8266.h
