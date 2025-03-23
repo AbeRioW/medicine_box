@@ -4,59 +4,27 @@
 
 bool device_connect = false;
 
-bool hand_shack = false;
 
 static  void handle_wifi_data(void);
 bool start_esp8266(void)
 { 
 	
 			HAL_UART_Transmit(&huart2,(uint8_t*)(AT_MODE2),13,0xffff);
-			HAL_Delay(100);
-	    while(1)
-			{
-				 if(rx2_end_flag)
-					{
-						//printf("%s\r\n",uart2_rx);
-						rx2_end_flag = false;
-						rx2_count=0;
-						HAL_UART_Receive_DMA(&huart2,uart2_rx,UART2_SIZE);  //需要重新启动DMA
-						break;
-					}
-			}
+			HAL_Delay(1000);
+      HAL_UART_Transmit(&huart2,(uint8_t*)(AT_SET),38,0xffff);
+				HAL_Delay(1000);
 			
 			HAL_UART_Transmit(&huart2,(uint8_t*)(AT_RST),8,0xffff);
-			HAL_Delay(100);
-	    while(1)
-			{
-				 if(rx2_end_flag)
-					{
-						//printf("%s\r\n",uart2_rx);
-						rx2_end_flag = false;
-						rx2_count=0;
-						HAL_UART_Receive_DMA(&huart2,uart2_rx,UART2_SIZE);  //需要重新启动DMA
-						break;
-					}
-			}
+			HAL_Delay(4000);
 			
 			HAL_UART_Transmit(&huart2,(uint8_t*)(AT_CIPMUX),13,0xffff);
-			HAL_Delay(100);
-	    while(1)
-			{
-				 if(rx2_end_flag)
-					{
-							//printf("%s\r\n",uart2_rx);
-						rx2_end_flag = false;
-						rx2_count=0;
-						HAL_UART_Receive_DMA(&huart2,uart2_rx,UART2_SIZE);  //需要重新启动DMA
-						break;
-					}
-			}
+			HAL_Delay(1000);
 			
-				 HAL_UART_Transmit(&huart2,(uint8_t*)(AT_CIPSERVER),16,0xffff);
-			   HAL_Delay(100);
-				 rx2_end_flag = false;
-				 rx2_count=0;
-				HAL_UART_Receive_DMA(&huart2,uart2_rx,UART2_SIZE);  //需要重新启动DMA
+		  HAL_UART_Transmit(&huart2,(uint8_t*)(AT_CIPSERVER),21,0xffff);
+			HAL_Delay(1000);
+			
+				__HAL_UART_ENABLE_IT(&huart2,UART_IT_IDLE);  
+			HAL_UART_Receive_DMA(&huart2,uart2_rx,1000);   
 			
 			 return true;
 			 
@@ -64,67 +32,45 @@ bool start_esp8266(void)
 
 void handle_esp8266(void)
 {
-	    uint8_t data[3]={'1','2','3'};
-	   // char* connected ="0,CONNECT";
-			char * connected = "+STA_CONNECTED";
-			if(device_connect==false)
+//	char *send = "hello\r\n";
+	char *wifi_connect = "0,CONNECT";
+	char *wifi_rec = "\r\n+IPD,";
+	if(rx2_end_flag)
+	{
+		  HAL_GPIO_WritePin(GPIOB, LED_Pin, GPIO_PIN_RESET);
+		  printf("HANDLE %s\r\n",uart2_rx);
+			rx2_end_flag = false;
+		
+		  if(memcmp(uart2_rx,wifi_connect,9)==0)  //wifi已连接
 			{
-
-				 	if(rx2_end_flag)
-					{
-						//printf("%s\r\n",uart2_rx);
-						rx2_end_flag = false;
-
-						if(memcmp(uart2_rx,connected,14)==0)
-						{
-								device_connect=true;
-								//printf("connected\r\n");
-						}
-				
-						rx2_count=0;
-						memset(uart2_rx,0,10000);
-						HAL_UART_Receive_DMA(&huart2,uart2_rx,UART2_SIZE);  //需要重新启动DMA
-//						OLED_ShowString(1,50,(uint8_t*)"hello",16,1);
-//					  OLED_Refresh();
-					} 
+						//printf("yes\r\n");
+						device_connect=true;
 			}
-			else
-			{
-//				printf("handle_esp8266\r\n");
-					if(rx2_end_flag)
-					{
-												//printf("%s\r\n",uart2_rx);
-						rx2_end_flag = false;
-						//printf("%s\r\n",uart2_rx);
-						handle_wifi_data();
-						rx2_count=0;
-						memset(uart2_rx,0,10000);
-						HAL_UART_Receive_DMA(&huart2,uart2_rx,UART2_SIZE);  //需要重新启动DMA
-					} 
-			}
-
 			
+			if(memcmp(uart2_rx,wifi_rec,7)==0)
+			{
+						handle_wifi_data();
+				   //send_wifi(send,7);
+			}
+
+			rx2_count=0;
+			memset(uart2_rx,0,UART2_SIZE);
+			HAL_UART_Receive_DMA(&huart2,uart2_rx,UART2_SIZE);  //需要重新启动DMA
+	} 
+				
 }
 
-void send_wifi(uint8_t *data,int size)
+void send_wifi(char *data,int size)
 {
 	  int offset = 0;  // 记录当前写入位置
-	 if(hand_shack)
-	 {
+
 			char send_data[50]={0};
 			char send_data1[50]={0};
 			sprintf(send_data,"AT+CIPSEND=0,%d\r\n",size);
 			HAL_UART_Transmit(&huart2,(uint8_t*)(send_data),16,0xffff);
 
 			HAL_Delay(100);
-		
-			for(int i=0;i<size;i++)
-			{
-					offset += sprintf(send_data1 + offset, "%d ", data[i]);
-			}
-			sprintf(send_data1+size,"\r\n");
-			HAL_UART_Transmit(&huart2,(uint8_t*)send_data1,size+2,0xffff);
-	 }
+		  HAL_UART_Transmit(&huart2,(uint8_t*)(data),size,0xffff);
 
 }
 
@@ -148,25 +94,5 @@ void send_wifi(uint8_t *data,int size)
 
 static  void handle_wifi_data(void)
 {
-	char * conect =  "\r\n+IPD,0,11:1234567890";
-	char * set_rh = "\r\n+IPD,0,5:10";
-	char * set_th = "\r\n+IPD,0,5:11";
-	if(memcmp(conect,uart2_rx,22)==0)
-	{
-			hand_shack = true;
-		  printf("hand shake\r\n");
-	}
-	
-	if(memcmp(set_rh,uart2_rx,13)==0) //设置湿度值
-	{
-					rh_bang = (uart2_rx[13]-0x30)*10+(uart2_rx[14]-0x30);
-		     printf("set_rh");
-		     printf("%d\r\n",rh_bang);
-	}
-	
-	if(memcmp(set_th,uart2_rx,13)==0) //设置温度值
-	{
-					th_bang = (uart2_rx[13]-0x30)*10+(uart2_rx[14]-0x30);
-	}
 		
 }

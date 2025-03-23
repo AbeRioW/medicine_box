@@ -240,8 +240,8 @@ void USART2_IRQHandler(void)
 			__HAL_UART_CLEAR_IDLEFLAG(&huart2);
 		 HAL_UART_DMAStop(&huart2);
 		
-		 rx2_count = UART2_SIZE - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);    //__HAL_DMA_GET_COUNTER??DMA???????????????
-		 rx2_end_flag = true;   																			//?????????¦Ë
+		 rx2_count = UART2_SIZE - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);    
+		 rx2_end_flag = true;   																			
 		  
 	}
   /* USER CODE END USART2_IRQn 0 */

@@ -118,7 +118,7 @@ unsigned char DHT11_READ_DATA(void)
 					  if(i_count/100)
 						{
 							i_count=0;	
-							send_wifi(data,4);
+							//send_wifi(data,4);
 						}
 
             return 1;                               //  数据校验通过

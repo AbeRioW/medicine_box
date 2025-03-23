@@ -88,8 +88,7 @@ void MX_USART2_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART2_Init 2 */
-	__HAL_UART_ENABLE_IT(&huart2,UART_IT_IDLE);  //???????§Ø?
-	HAL_UART_Receive_DMA(&huart2,uart2_rx,1000);   //??DMA????
+
   /* USER CODE END USART2_Init 2 */
 
 }
@@ -221,9 +220,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-//int fputc(int ch,FILE *f)
-//{
-//	HAL_UART_Transmit (&huart1 ,(uint8_t *)&ch,1,HAL_MAX_DELAY );
-//	return ch;
-//}
+int fputc(int ch,FILE *f)
+{
+	HAL_UART_Transmit (&huart1 ,(uint8_t *)&ch,1,HAL_MAX_DELAY );
+	return ch;
+}
 /* USER CODE END 1 */

@@ -33,7 +33,7 @@ extern "C" {
 #include "stdbool.h"
 
 
-#define UART2_SIZE 10000
+#define UART2_SIZE 1000
 extern uint8_t buluofen[17]; 
 extern uint8_t ninenine[22]; 
 

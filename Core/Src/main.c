@@ -110,9 +110,6 @@ int main(void)
   OLED_DisplayTurn(0);
 	OLED_Clear();
 
-//  							  OLED_ShowString(1,1,(uint8_t*)"123",16,1);
-//					  OLED_Refresh();
-
 	PCD_Reset();
   PCD_AntennaOff(); 
   PCD_AntennaOn(); 
@@ -120,8 +117,6 @@ int main(void)
 	if(DS_Init()==0)
 	{
 	}
-//	  HAL_GPIO_WritePin(GPIOB, LED_Pin, GPIO_PIN_RESET);
-//	  HAL_GPIO_WritePin(GPIOB, LAY_Pin,GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
