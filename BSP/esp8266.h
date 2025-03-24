@@ -27,4 +27,6 @@ void handle_esp8266(void);
 bool start_esp8266(void);
 void send_wifi(char *data,int size);
 void uart3_send_message(void);
+void uart3_send_messageCALL(void);
+void uart3_send_messageCALL2(void);
 #endif

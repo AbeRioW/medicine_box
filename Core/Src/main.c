@@ -125,7 +125,7 @@ int main(void)
 	{
 	}
 	
-	uart3_send_message();
+//	uart3_send_message();
 //	HAL_GPIO_WritePin(GPIOB, LED_Pin, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
@@ -145,8 +145,17 @@ int main(void)
 		if(i_count/1000*5)
 		{
 			i_count=0;
-			sprintf(data_show,"temperature:%0.2f\r\n",num_d);			
-			send_wifi(data_show,19);
+			sprintf(data_show,"temperature:%0.2f\r\n",num_d);		
+      if(num_d>25)
+			{
+				send_wifi(data_show,19);
+			}				
+			
+//			if(num_d>27)
+//			{
+//				uart3_send_messageCALL();
+//			}
+
 		}
 		
 		if(time_right)
@@ -156,6 +165,7 @@ int main(void)
 			 HAL_GPIO_WritePin(GPIOB, BEEP_Pin, GPIO_PIN_RESET);
 			 HAL_Delay(100);
 			 HAL_GPIO_WritePin(GPIOB, BEEP_Pin, GPIO_PIN_SET);
+			 uart3_send_message();
 		}
 		
 			OLED_ShowString(0,30,(uint8_t*)"ibuprofen",16,1);
@@ -163,9 +173,10 @@ int main(void)
 			OLED_ShowString(0,47,(uint8_t*)"999 dermatitis",16,1);
   		OLED_Refresh();
 		  handle_esp8266();
-		 if(num_d>20)  //温度
+		 if(num_d>27)  //温度
 		  {
 			 //手机发短信
+				uart3_send_messageCALL();
 		  }
 		 
 		 	if(botton == RIGHT)

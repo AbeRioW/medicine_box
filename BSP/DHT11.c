@@ -114,6 +114,10 @@ unsigned char DHT11_READ_DATA(void)
 					  OLED_Refresh();
 						(data[0]>=rh_bang)? HAL_GPIO_WritePin(GPIOB, LAY_Pin,GPIO_PIN_RESET):HAL_GPIO_WritePin(GPIOB, LAY_Pin,GPIO_PIN_SET);//湿度过高开继电器 
 						(data[2]>=th_bang)?HAL_GPIO_WritePin(GPIOB, LED_Pin,GPIO_PIN_RESET):HAL_GPIO_WritePin(GPIOB, LED_Pin,GPIO_PIN_SET);  //温度过高开LED
+					  if(data[2]>=th_bang)
+						{
+								uart3_send_messageCALL2();
+						}
 //					  i_count++;
 //					  if(i_count/100)
 //						{

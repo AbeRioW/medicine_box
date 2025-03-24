@@ -176,5 +176,33 @@ void uart3_send_message(void)
 		HAL_Delay(1000);
 }
 
+void uart3_send_messageCALL(void)
+{
+	  uint8_t end_data = 0x1a;
+	
+		HAL_UART_Transmit(&huart3,(uint8_t*)"AT+CMGF=1\r\n",11,0xffff);
+		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart3,(uint8_t*)"AT+CMGS=\"+8613880785811\"\r\n",26,0xffff);  //13880785811
+		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart3,(uint8_t*)"temperature is too high\r\n",25,0xffff);
+		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart3,&end_data,1,0xffff);
+		HAL_Delay(1000);
+}
+
+
+void uart3_send_messageCALL2(void)
+{
+	  uint8_t end_data = 0x1a;
+	
+		HAL_UART_Transmit(&huart3,(uint8_t*)"AT+CMGF=1\r\n",11,0xffff);
+		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart3,(uint8_t*)"AT+CMGS=\"+8613880785811\"\r\n",26,0xffff);  //13880785811
+		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart3,(uint8_t*)"ambient temperature is too high\r\n",33,0xffff);
+		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart3,&end_data,1,0xffff);
+		HAL_Delay(1000);
+}
 
 
