@@ -110,6 +110,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_TIM1_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 	OLED_Init();
 	OLED_ColorTurn(0);
@@ -123,6 +124,8 @@ int main(void)
 	if(DS_Init()==0)
 	{
 	}
+	
+	uart3_send_message();
 //	HAL_GPIO_WritePin(GPIOB, LED_Pin, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
@@ -133,7 +136,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
 		DHT11_READ_DATA();
 		num_d = Get_DS_Temperature();		
 		oled_showFnum(1,20,num_d,8,1);

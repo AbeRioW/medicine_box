@@ -15,10 +15,16 @@
 #define AT_CIPSERVER "AT+CIPSERVER=1,5000\r\n"  //start
 
 
+
+//#define CMGF "AT+CMGF=1\r\n";
+//#define CMGS "+8613880785811\r\n";
+//#define CM_MESSAGE  "eat medicine\r\n"
+
 extern bool device_connect;
 extern bool hand_shack;
 
 void handle_esp8266(void);
 bool start_esp8266(void);
 void send_wifi(char *data,int size);
+void uart3_send_message(void);
 #endif

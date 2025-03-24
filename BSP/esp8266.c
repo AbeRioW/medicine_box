@@ -95,7 +95,7 @@ void handle_esp8266(void)
 			
 						if(memcmp(uart2_rx,timeset10,16)==0)
 			{
-				printf("yes\r\n");
+				//printf("yes\r\n");
 				  time_set = 10;
 			}
 
@@ -157,3 +157,24 @@ static  void handle_wifi_data(void)
 {
 		
 }
+
+
+
+
+////sen message
+void uart3_send_message(void)
+{
+	  uint8_t end_data = 0x1a;
+	
+		HAL_UART_Transmit(&huart3,(uint8_t*)"AT+CMGF=1\r\n",11,0xffff);
+		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart3,(uint8_t*)"AT+CMGS=\"+8613880785811\"\r\n",26,0xffff);  //13880785811
+		HAL_Delay(1000);
+			HAL_UART_Transmit(&huart3,(uint8_t*)"take medicine\r\n",15,0xffff);
+		HAL_Delay(1000);
+				HAL_UART_Transmit(&huart3,&end_data,1,0xffff);
+		HAL_Delay(1000);
+}
+
+
+
